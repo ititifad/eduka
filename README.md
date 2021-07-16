@@ -5,3 +5,5 @@ APIs used are SMS and Payment Checkout
 
 The Project is already deployed on heroku
 Project Link: https://edukani.herokuapp.com/
+
+This is an individual project, no group involved in creation of the project
