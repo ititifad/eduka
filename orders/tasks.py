@@ -1,7 +1,6 @@
 from celery import task
 from django.core.mail import send_mail
 from .models import Order
-# from twilio.rest import Client
 from django.conf import settings
 import json
 import requests
