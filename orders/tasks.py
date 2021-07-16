@@ -41,8 +41,8 @@ def order_created(order_id):
 
 def send_sms(order_id, customer_name, delivery_addr, customer_phone):
     URL = 'https://apisms.beem.africa/v1/send'
-    api_key ='6fa1c6173155f296'
-    secret_key = 'MjBjNzk1YTVmYzRiYTk4YjFiNjQ0ZTFhOTQwOTQ0Mjg4ZmE4MDYxYjIwMTY1Nzg0YmQzZjEzMGEwMWI2NmM0Yg=='
+    api_key ='api_key'
+    secret_key = 'secret_key'
     content_type = 'application/json'
     source_addr = 'Kanyasu'
     apikey_and_apisecret = api_key + ':' + secret_key
