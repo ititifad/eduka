@@ -1,0 +1,35 @@
+{% extends 'myapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Become vendor | {% endblock %}
+
+{% block content %}
+
+<div class="columns">
+    <div class="column is-6 is-offset-3">
+    <h1 class="title">Become vendor</h1>
+
+    <div class="card bg-white">
+        <div class="card-body">
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        {{ form|crispy}}
+        {{ vendor_form|crispy}}
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-dark is-uppercase">Sign up</button>
+            </div>
+        </div>
+    </form>
+
+    </div>
+    </div>
+    <hr>
+
+    <h2 class="subtitle">Already have an account?</h2>
+
+    <a href="{% url 'login' %}">Log in</a>
+</div>
+</div>
+{% endblock %}

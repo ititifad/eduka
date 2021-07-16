@@ -1,0 +1,14 @@
+{% extends "myapp/base.html" %}
+{% block title %}Pay by credit card{% endblock %}
+{% block content %}
+<!-- <h1>Pay by credit card</h1> -->
+<link rel="stylesheet" href="https://checkout.beem.africa/dist/0.1_alpha/bpay.min.css"/>
+<script src="https://checkout.beem.africa/dist/0.1_alpha/bpay.min.js"></script>
+<div id="beem-button" data-price="{{total_cost}}" data-mobile="{{phone}}" data-reference="SOKO-12345" data-transaction="{{order_id}}"></div>
+<div id="beem-page" class="beem-page">
+    {% csrf_token %}
+</div>
+
+<script type="text/javascript">InitializeBeem();</script>
+{% endblock %}
+

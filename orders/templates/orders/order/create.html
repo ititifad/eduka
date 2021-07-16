@@ -1,0 +1,66 @@
+{% extends "myapp/base.html" %}
+{% block title %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+Checkout
+{% endblock %}
+{% block content %}
+
+
+
+<section class="section">
+<div class="container">
+    <div class="columns is-justified-content-center">
+        <div class="column is-5">
+
+            <h1 class="title has-text-centered">Checkout</h1>
+            <form method="post">
+                <div class="box">
+            {{ form|crispy }}
+            <input type="submit" value="Place order">
+            {% csrf_token %}
+                </div>
+            </form>
+            
+        </div>
+        <div class="column is-5">
+            <div class="box">
+                <h3 style="color: rgb(0, 162, 255);" class="subtitle">Your orders</h3>
+                <hr>
+                <ul>
+                {% for item in cart %}
+                <li>
+                {{ item.quantity }}x {{ item.product.name }}
+                <span>TZS {{ item.total_price|intcomma }}</span>
+                </li>
+                <hr>
+                {% endfor %}
+                </ul>
+                <p style="color: rgb(0, 162, 255);">Total: TZS {{ cart.get_total_price|intcomma }}</p>
+                </div>
+        </div>
+</div>
+</div>
+
+<div id='beem-button' data-price='2000' data-reference='SAMPLE-12345' data-mobile='255701000000' data-transaction='96f9cc09-afa0-40cf-928a-d7e2b27b2408'></div> 
+  <div id='beem-page' class='beem-page'></div> 
+</section>
+
+
+{% endblock %}
+
+
+            <div class="box">
+                <h3 style="color: rgb(0, 162, 255);" class="subtitle">Your order</h3>
+                <hr>
+                <ul>
+                {% for item in cart %}
+                <li>
+                {{ item.quantity }}x {{ item.product.name }}
+                <span>TZS {{ item.total_price|intcomma }}</span>
+                </li>
+                <hr>
+                {% endfor %}
+                </ul>
+                <p style="color: rgb(0, 162, 255);">Total: TZS {{ cart.get_total_price|intcomma }}</p>
+                </div>

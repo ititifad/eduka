@@ -1,0 +1,96 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% load static %}
+{% load humanize %}
+  
+
+{% block content %}
+<style>
+    form p input {
+    width:300px;
+    font-size:13px;
+    margin-bottom:10px;
+    padding:10px 12px;
+    border:0;
+    background:#efefef;
+    color:#666;
+    border-radius:4px;
+}
+</style>
+  <section class="section">
+      <div class="container">
+          <div class="columns is-justified-content-center">
+              <div class="column is-5">
+                  <div class="box">
+                <img style="max-width: 100%; max-height: 100%;" src="{{product.image.url}}" class="block__pic">
+              </div>
+              </div>
+              <div class="column is-7">
+                  <div class="box px-4 py-5">
+                <a href="{{ product.category.get_absolute_url }}">
+                    <h3>{{ product.category }}</h3>
+                </a>
+             <br>
+                <p>{{product.name}} <span class="tag is-link is-normal">{{product.state}}</span>
+                 <br>
+                    <p>{{product.vendor}}</p></a>
+                  
+                    <p>TZS {{product.price|intcomma}}</p>
+                 <br>
+                    <p>{{product.description}}</p>
+         <br>
+         <div class="py-4 px-4">
+                    <a button class="button is-link" href="tel:{{product.vendor.phone_number}}">Call Vendor</button></a>
+                </div>
+
+                    <div class="py-4 px-4">
+                        <button class="button is-primary" id="signup">Vendor Information</button>
+                    </div>
+                    <div class="py-4 px-4">
+                    <form action="{% url 'cart_add' product.id %}" method="post">
+                        {{ cart_product_form }}
+                        {% csrf_token %}
+                        <input type="submit" value="Add to cart">
+                    </form>
+                    </div>
+              
+              </div>
+          </div>
+      </div>
+      </div>
+  </section>
+
+    <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content has-background-white py-5 px-5">
+        <h3 class="title mb-6 has-text-centered">Vendor Information</h3>
+        <form>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input type="text" class="input" placeholder="Name" value="{{product.vendor.name}}">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Phone Number</label>
+                <div class="control">
+                    <input type="text" class="input" placeholder="Email" value="{{product.vendor.phone_number}}">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Location</label>
+                <div class="control">
+                    <input type="text" class="input" placeholder="Email" value="{{product.vendor.location}}">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="message">{{product.vendor.description}}</textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+    {% endblock %}

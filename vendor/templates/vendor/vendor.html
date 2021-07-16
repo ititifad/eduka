@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}{{ vendor.name }} | {% endblock %}
+
+{% block content %}
+    <div class="columns is-multiline mb-6">
+        <div class="column is-12 has-text-centered mt-6 mb-6">
+            <h2 class="is-size-3">{{ vendor.name }}</h2>
+        </div>
+
+        {% for product in vendor.products.all %}
+            <div class="col-md-3">
+                
+                <a href="{{product.get_absolute_url}}">
+                    <img class="image-thumbail text-center" src="{{product.image.url}}" alt="Card image cap">
+
+                    
+                        <p style="text-align: center;">{{product.name}}</p>
+                        <p style="text-align: center;">TZS {{product.price}}</p>
+                  
+                </a>
+                </div>
+      
+            {% empty %}
+            <h3>No Products...</h3>
+            {% endfor %}
+    </div>
+{% endblock %}

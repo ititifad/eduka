@@ -1,0 +1,50 @@
+{% extends 'myapp/base.html' %}
+{% load humanize %}
+{% block title %}Vendor admin | {% endblock %}
+
+{% block content %}
+    <div class="box">
+        <h1 class="title">Vendor admin - {{ vendor.name }}</h1>
+
+        <!--<strong>My balance: </strong>${{ vendor.get_balance }}<br>
+        <strong>My paid amount: </strong>${{ vendor.get_paid_amount }}-->
+
+        <hr>
+
+        <a href="{% url 'edit_vendor' %}" class="button is-info is-uppercase">Edit</a>
+        <a href="{% url 'logout' %}" class="button is-danger is-uppercase">Log out</a>
+    </div>
+
+    <div class="box">
+        <h2 class="is-size-3 mb-4">My products</h2>
+
+        <a href="{% url 'add_product' %}" class="button is-dark is-uppercase mb-6">Add product</a>
+
+        {% if products %}
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td><a href="{{product.get_absolute_url}}">{{ product.name }}</a></td>
+                            <td>${{ product.price|intcomma }}</td>
+                            <td><a  class="btn btn-sm btn-danger" href="">Delete</a></td>
+                            <th><a class="btn btn-sm btn-warning" href="">Update</a></th>
+                        </tr>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You don't have any products yet...</p>
+        {% endif %}
+    </div>
+{% endblock %}
