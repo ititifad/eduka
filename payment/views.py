@@ -15,8 +15,8 @@ def payment_process(request):
     total_cost = order.get_total_cost()
 
     if request.method == 'POST':
-        api_key ='30c8bfbb68caae0c'
-        secret_key ='NTU1NjJhMjE2ZjVhYzkxZmZlODU1YmRjZGJlZDJlNDgxYTNhYWYzZTkzOTI4MWY4NDE2MDc4NWYxZTZhM2Y1Mg=='
+        api_key ='api_key'
+        secret_key ='secret_key'
         
         
         result = {
