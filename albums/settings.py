@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's3w$3yztwok8@&(5dy6i7sl#-49rfn31##20=-5&w9=&2#vfz_'
+SECRET_KEY = 'secret_key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,17 +42,6 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'vendor_admin'
 LOGOUT_REDIRECT_URL = 'gallery'
 
-# Braintree settings
-BRAINTREE_MERCHANT_ID = env("BRAINTREE_MERCHANT_ID")
-BRAINTREE_PUBLIC_KEY = env("BRAINTREE_PUBLIC_KEY")
-BRAINTREE_PRIVATE_KEY = env("BRAINTREE_PRIVATE_KEY")
-
-BRAINTREE_CONF = braintree.Configuration(
-braintree.Environment.Sandbox,
-BRAINTREE_MERCHANT_ID,
-BRAINTREE_PUBLIC_KEY,
-BRAINTREE_PRIVATE_KEY
-)
 
 
 CART_SESSION_ID = 'cart'
